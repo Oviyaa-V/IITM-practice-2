@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Document</title>
+</head>
+<body>
+    {% for product in Products | groupby("producer") %}
+        <h2>{{product.grouper}}</h2>
+
+        <table border="1">
+        <tr>
+            <th>Product_Id</th>
+            <th>Product_Name</th>
+            <th>Product_Type</th>
+        </tr>
+        {% for item in product.list %}
+        <tr>
+            <td>{{item.product_id}}</td>
+            <td>{{item.prod_name}}</td>
+            <td>{{item.type}}</td>
+        </tr>
+        {% endfor %}
+
+        </table>
+        <h2>The no of items in {{product.grouper}} is {{product.list | length}}</h2>
+
+    {% endfor %}
+</body>
+</html>

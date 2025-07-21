@@ -1,3 +1,5 @@
+from jinja2 import Template
+
 Products = [
   {'product_id':'101', 'prod_name':'Legion', 'type':'Laptop', 'producer':'Lenovo'},
   {'product_id':'102', 'prod_name':'S21pro', 'type':'Cellphone', 'producer':'Samsung'},
@@ -12,3 +14,15 @@ Products = [
   {'product_id':'111', 'prod_name':'M21', 'type':'Cellphone', 'producer':'Samsung'},
   {'product_id':'112', 'prod_name':'A7000', 'type':'Cellphone', 'producer':'Lenovo'}  
 ]
+
+file = open("index.html")
+temp = file.read()
+file.close
+
+make_template = Template(temp)
+
+output = make_template.render(Products = Products)
+
+op_file = open("output.html","w")
+op_file.write(output)
+op_file.close()
